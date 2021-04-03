@@ -10,7 +10,7 @@ def main():
 
     calculated_data = []
     for artikal in PRODUCTS:
-        client = Client(artikal['url'])
+        client = Client(url=artikal['url'])
         data = client.get_data()
 
         calculated_data.append(calculate_data(

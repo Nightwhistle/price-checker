@@ -16,8 +16,8 @@ class Client:
 
         soup = BeautifulSoup(mystr, 'html.parser')
 
-        response_handler = UrlHandlerFactory.get_handler(url=self.url)
+        response_handler = UrlHandlerFactory.get_handler(url=self.url)(data=soup)
         return {
-            'price': response_handler.get_price(data=soup),
-            'title': response_handler.get_title(data=soup),
+            'price': response_handler.get_price(),
+            'title': response_handler.get_title(),
         }
