@@ -1,0 +1,7 @@
+version: '3'
+services:
+  example:
+    build: .
+    image: python:3
+    volumes:
+      - .:/usr/src/app
