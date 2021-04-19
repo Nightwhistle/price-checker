@@ -11,6 +11,9 @@ class UrlHandlerFactory():
         if 'n-sport' in url:
             return NSportHandler
 
+        if 'legend.rs' in url:
+            return LegendHandler
+
 
 class UrlHandler(metaclass=abc.ABCMeta):
     def __init__(self, data=None):
@@ -43,3 +46,9 @@ class NSportHandler(UrlHandler):
     def get_price(self):
         price = self.data.find(class_='product-price')
         return int(price.string[:-4].replace('.', ''))
+
+
+class LegendHandler(UrlHandler):
+    def get_price(self):
+        price = self.data.find(class_='product__price--regular-value')
+        return int(price.string[:-3])
